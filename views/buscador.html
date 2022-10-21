@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Buscar Series</title>
+    <style>
+        .resultado{
+            color:darkturquoise;
+        }
+
+        .id{
+            color: cornflowerblue;
+        }
+
+        .encontrado{
+            color:darkgreen;
+        }
+
+        .unknown{
+            color:crimson
+        }
+    </style>
+</head>
+<body>
+    <form action="/buscador" method="get">
+        <input type="search" placeholder="Escribe algo" name="busqueda" required>
+        <input type="submit" value="Buscar">
+    </form>
+    {% if termino.length > 0 %}
+    <h1>Resultados de búsqueda: <strong class="resultado">{{termino}}</strong></h1>
+    <ul>
+        {% for p in data %}
+        <li><strong class="id">ID:{{p.id}}</strong><br><strong>Título:</strong>{{ p.titulo }}<br><strong>Genero:</strong> {{ p.genero }}<br><strong>Año:</strong>{{p.year}}<br></li>
+        {% endfor %}
+    </ul>    
+    <p class="encontrado">Encontrados {{data.length}}</p>
+    <p><a href="/">Regresar a la Home</a></p>
+    {% endif %} 
+    {% if data.length == 0 %}
+        <h2 class="unknown">No se han encontrado resultados</h2>
+        <p><a href="/">Regresar a la Home</a></p>
+    {% endif %}
+</body>
+</html>

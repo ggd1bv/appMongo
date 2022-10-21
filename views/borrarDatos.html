@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Borrar Series</title>
+        <style>
+            .resultado{
+                color:darkturquoise;
+            }
+    
+            .titulo{
+                color: cornflowerblue;
+            }
+    
+            .encontrado{
+                color:darkgreen;
+            }
+    
+            .unknown{
+                color:crimson
+            }
+        </style>
+</head>
+<body>
+    <form action="/borrarDatos" method="get">
+        <input type="search" placeholder="Escribe algo" name="busqueda" required>
+        <input type="submit" value="Buscar">
+    </form>
+    {% if termino.length > 0 %}
+    <h1>Resultados de la búsqueda: <strong class="resultado">{{termino}}</strong></h1>
+    <ul>
+        {% for p in data %}
+          <li class="titulo">Serie: {{ p.titulo }} - (Año: {{ p.year }}) 
+                <form action="/borrar" method="post">
+                    <input type="hidden" name="titulo" value="{{ p.titulo }}">
+                    <input type="submit" value="Borrar">
+                </form>
+          </li>
+        {% endfor %}
+    </ul>    
+    <p class="encontrado">Encontrados {{data.length}}</p>
+    {% endif %} 
+    {% if data.length == 0 %}
+        <h2 class="unknown">No se han encontrado resultados</h2>
+    {% endif %} 
+    <p><a href="/">Regresar a la Home</a></p>
+</body>
+</html>

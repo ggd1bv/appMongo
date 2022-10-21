@@ -1,0 +1,20 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>IMDb Casero</title>
+</head>
+<body>
+    <h1>Series de TV</h1>
+    <ul>
+        {% for p in data %}
+          <li><a href="serie/{{p.id}}"><strong>Título:</strong>{{ p.titulo }}</a></li>
+        {% endfor %}
+    </ul>
+    <p><a href="/buscador">Buscar series</a></p>
+    <p><a href="/alta">Dar de alta series</a></p>
+    <p><a href="/modificarTitulo">Modificar Titulo</a></p>
+    <p><a href="/borrarDatos">Borrar Datos</a></p>
+</body>
+</html>

@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Alta de personajes</title>
+    <style>
+        input,label{
+            display: block;
+            width: 200px;
+        }
+        label{
+            margin-top:16px;
+        }
+        input[type="submit"]{
+            margin-top: 24px;
+        }
+    </style>
+</head>
+<body>
+    <h1>Agregar Series</h1>
+    <form action="/alta" method="post">
+        <label>Titulo</label>
+        <input type="text" name="titulo" required>
+        <label>Año</label>
+        <input type="number" name="year" required>
+        <label>Genero</label>
+        <input type="text" name="genero" required>
+        <label>Pais</label>
+        <input type="text" name="pais" required>
+        <input type="submit" value="Agregar">
+    </form>
+    {% if mensaje %}
+        <p>{{mensaje}}</p>
+    {% endif %}    
+    <p><a href="/">Regresar a la Home</a></p>
+</body>
+</html>
